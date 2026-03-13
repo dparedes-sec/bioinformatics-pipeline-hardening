@@ -61,8 +61,7 @@ nohup.out
 
 # --- SBOM generados localmente ---
 sbom-local.json
-sbom-*.json
-!sbom.json
+sbom-temp.json
 
 # --- Sistema operativo ---
 .DS_Store
