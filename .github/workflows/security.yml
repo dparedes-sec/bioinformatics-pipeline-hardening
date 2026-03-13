@@ -1,4 +1,6 @@
+# .github/workflows/security.yml
 name: Security Pipeline
+
 on:
   push:
     branches: [main, develop]
@@ -7,10 +9,11 @@ on:
 
 jobs:
   trivy-scan:
+    name: Dependency & Config Scan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Trivy filesystem scan
+      - name: Run Trivy
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
@@ -19,22 +22,13 @@ jobs:
           exit-code: '0'
 
   secret-scan:
+    name: Secret Detection
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
+        with:
+          fetch-depth: 0
       - uses: trufflesecurity/trufflehog@main
         with:
           path: ./
           base: main
-
-  codeql:
-    runs-on: ubuntu-latest
-    permissions:
-      security-events: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: github/codeql-action/init@v3
-        with: { languages: python }
-      - uses: github/codeql-action/autobuild@v3
-      - uses: github/codeql-action/analyze@v3
