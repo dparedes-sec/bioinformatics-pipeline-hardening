@@ -1,6 +1,3 @@
-# ============================================================
-# .gitignore — P1: Bioinformatics Pipeline Security Hardening
-# ============================================================
 
 # --- Nextflow ---
 work/
@@ -14,7 +11,7 @@ trace.txt
 dag.dot
 dag.svg
 
-# --- Datos genomicos (nunca subir datos reales) ---
+# --- Datos genomicos ---
 *.fastq
 *.fastq.gz
 *.fq
@@ -45,7 +42,7 @@ config/credentials*
 # --- Docker ---
 .docker/
 
-# --- Python (si tienes scripts auxiliares) ---
+# --- Python  ---
 __pycache__/
 *.py[cod]
 *.pyo
@@ -62,7 +59,7 @@ build/
 logs/
 nohup.out
 
-# --- SBOM generados localmente (el del repo es el oficial) ---
+# --- SBOM generados localmente ---
 sbom-local.json
 sbom-*.json
 !sbom.json
@@ -81,4 +78,4 @@ desktop.ini
 
 # --- Trivy cache ---
 .trivy/
-trivy-cache/
+trivy-cache/.env
