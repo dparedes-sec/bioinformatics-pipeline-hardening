@@ -51,24 +51,28 @@ Full STRIDE analysis covering:
 ## Project Structure
 ```
 bioinformatics-pipeline-hardening/
-├── .github/workflows/
-│   └── security.yml          # Trivy + TruffleHog on every push
-├── data/mock/
-│   ├── sample1.fastq.gz      # Synthetic data for testing
-│   └── checksums.sha256      # SHA256 integrity verification
+├── .github/
+│   └── workflows/
+│       ├── security.yml          # Trivy + TruffleHog on every push
+│       └── dependabot.yml        # Automated dependency updates
+├── data/
+│   └── mock/
+│       ├── sample1.fastq.gz      # Synthetic data for testing
+│       └── checksums.sha256      # SHA256 integrity verification
 ├── docs/
-│   ├── THREAT_MODEL.md       # STRIDE analysis
-│   ├── HARDENING_CHECKLIST.md# Security controls status
-│   └── LESSONS_LEARNED.md    # Mistakes made and insights gained
-├── sbom-repo.json            # SBOM — repository (SPDX)
-├── sbom-fastqc-image.json    # SBOM — FastQC container (403 components)
-├── main.nf                   # Nextflow pipeline (DSL2)
-├── nextflow.config           # Docker profile configuration
-├── .env.example              # Required environment variables
-├── SECURITY.md               # Vulnerability reporting policy
-└── LICENSE                   # MIT 2026
+│   ├── THREAT_MODEL.md           # STRIDE analysis
+│   ├── HARDENING_CHECKLIST.md    # Security controls status
+│   └── LESSONS_LEARNED.md        # Mistakes made and insights gained
+├── sbom-repo.json                # SBOM — repository (SPDX)
+├── sbom-fastqc-image.json        # SBOM — FastQC container (403 components)
+├── main.nf                       # Nextflow pipeline (DSL2)
+├── nextflow.config               # Docker profile configuration
+├── .env.example                  # Required environment variables
+├── .gitignore
+├── SECURITY.md                   # Vulnerability reporting policy
+├── LICENSE                       # MIT 2026
+└── README.md
 ```
-
 ---
 
 ## Running the Pipeline
