@@ -57,7 +57,7 @@ bioinformatics-pipeline-hardening/
 │       └── dependabot.yml        # Automated dependency updates
 ├── data/
 │   └── mock/
-│       ├── sample1.fastq.gz      # Synthetic data for testing
+│       ├── generate_mock_data.py # Generates reproducible synthetic FASTQ data
 │       └── checksums.sha256      # SHA256 integrity verification
 ├── docs/
 │   ├── THREAT_MODEL.md           # STRIDE analysis
@@ -81,20 +81,24 @@ bioinformatics-pipeline-hardening/
 - WSL2 (Ubuntu) or Linux
 - Nextflow 23+
 - Docker Desktop (with WSL2 integration enabled)
+- Python 3.x
 
 **Setup:**
 ```bash
 git clone https://github.com/dparedes-sec/bioinformatics-pipeline-hardening
 cd bioinformatics-pipeline-hardening
 
-# Verify input data integrity before running
+# Generate synthetic mock data (reproducible — fixed random seed)
+python3 data/mock/generate_mock_data.py
+
+# Verify data integrity before running
 cd data/mock && sha256sum --check checksums.sha256 && cd ../..
 
 # Run the pipeline
 nextflow run main.nf -profile docker
 ```
 
-**Results** will be saved to `results/fastqc/`.
+Results will be saved to `results/fastqc/`.
 
 ---
 
